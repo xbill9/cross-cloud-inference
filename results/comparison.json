@@ -136,7 +136,9 @@
       "id >= 10"
     ],
     "tok_s": 93.3,
-    "bench_median_s": 1.029
+    "bench_median_s": 1.029,
+    "price": "2.500 USD/1M out",
+    "usd_per_1m_out": 2.5
   },
   {
     "id": "gcp.maas",
@@ -154,7 +156,9 @@
       "id >= 10"
     ],
     "tok_s": 14.2,
-    "bench_median_s": 7.077
+    "bench_median_s": 7.077,
+    "price": "0.600 USD/1M out",
+    "usd_per_1m_out": 0.6
   },
   {
     "id": "gcp.vertex",
@@ -172,7 +176,10 @@
       "id >= 10"
     ],
     "tok_s": 90.2,
-    "bench_median_s": 0.932
+    "bench_median_s": 0.932,
+    "price": "0.919 USD/hr",
+    "usd_per_1m_out": 2.83,
+    "usd_per_month_24x7": 671
   },
   {
     "id": "gcp.cloudrun",
@@ -190,7 +197,10 @@
       "id >= 10"
     ],
     "tok_s": 119.3,
-    "bench_median_s": 0.704
+    "bench_median_s": 0.704,
+    "price": "1.0465 USD/hr",
+    "usd_per_1m_out": 2.44,
+    "usd_per_month_24x7": 764
   },
   {
     "id": "gcp.gke",
@@ -208,7 +218,10 @@
       "id >= 10"
     ],
     "tok_s": 104.7,
-    "bench_median_s": 0.803
+    "bench_median_s": 0.803,
+    "price": "0.9593 USD/hr",
+    "usd_per_1m_out": 2.55,
+    "usd_per_month_24x7": 700
   },
   {
     "id": "gcp.gce",
@@ -226,7 +239,31 @@
       "id >= 10"
     ],
     "tok_s": 94.3,
-    "bench_median_s": 0.891
+    "bench_median_s": 0.891,
+    "price": "0.7783 USD/hr",
+    "usd_per_1m_out": 2.29,
+    "usd_per_month_24x7": 568
+  },
+  {
+    "id": "gcp.tpu",
+    "cloud": "GCP",
+    "path": "your VM, Google chip",
+    "hardware": "TPU v5e-1 (v5litepod-1)",
+    "model": "Gemma 4 E2B bf16",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 1.65,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 105.3,
+    "bench_median_s": 0.921,
+    "price": "0.6 USD/hr",
+    "usd_per_1m_out": 1.58,
+    "usd_per_month_24x7": 438
   },
   {
     "id": "azure.foundry",

@@ -6,7 +6,8 @@
 Sources (each repo's own runs; nothing is re-measured here):
     AWS    ~/aws-inference-strands/results/2026-10-05-stage/{demo1-engine,demo1-rows,bench-chat}.json
            ~/aws-inference-strands/results/2026-10-12-cost/prices.json
-    GCP    ~/gcp-inference/results/2026-10-12/{demo1-engine,demo1-rows,bench}-<backend>.json, prices.json if present
+    GCP    ~/gcp-inference/results/2026-10-12/{demo1-engine,demo1-rows,bench}-<backend>.json, prices.json
+           (SKU rates, turned into USD/hr per backend by gcp-inference's cost.hourly())
     Azure  ~/azure-inference/results/2026-10-12/{demo1-engine,demo1-rows,bench-chat}.json, prices.json
 
 Demo 1 answers are re-graded with one grader (azure-inference/demo1_counting.py, the same file as
@@ -18,6 +19,7 @@ one request at a time, busy for the whole hour. Per-token backends use their lis
 
 import argparse
 import glob
+import importlib.util
 import json
 import os
 import re
@@ -103,11 +105,15 @@ def prices():
         out[f"azure.{b}"] = ("hour", p["usd"])
     for b, p in z.get("per_token", {}).items():
         out[f"azure.{b}"] = ("token", p["output"]["usd"] * 1000)
-    g = jload(f"{GCP}/prices.json") or {}
-    for b, usd in g.get("usd_per_hour", {}).items():
-        out[f"gcp.{b}"] = ("hour", usd)
-    for b, usd in g.get("usd_per_1m_output", {}).items():
-        out[f"gcp.{b}"] = ("token", usd)
+    g = jload(f"{GCP}/prices.json")
+    if g:  # SKU rates; the per-backend hour is gcp-inference's own cost.hourly(), GKE node g2-standard-8
+        spec = importlib.util.spec_from_file_location("gcp_cost", f"{HOME}/gcp-inference/cost.py")
+        gcost = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(gcost)
+        for b, usd in gcost.hourly(g, "g2-standard-8").items():
+            out[f"gcp.{b}"] = ("hour", round(usd, 4))
+        out["gcp.gemini"] = ("token", g["rates"]["gemini_out"]["usd"] * 1e6)
+        out["gcp.maas"] = ("token", g["rates"]["maas_out"]["usd"] * 1e6)
     return out
 
 

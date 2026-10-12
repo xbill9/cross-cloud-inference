@@ -187,14 +187,16 @@ The same 100-token prompt, one request at a time, timed on the client. These fig
 | 🥈 vLLM on EC2 g6 (L4) | AWS | 132.45 |
 | 🥉 vLLM on Cloud Run (L4) | GCP | 119.3 |
 | Amazon Bedrock, Nova Micro | AWS | 115.85 |
+| vLLM on Cloud TPU v5e-1 | GCP | 105.3 |
 | SageMaker endpoint (L4) | AWS | 105.2 |
 | vLLM on GKE Autopilot (L4) | GCP | 104.7 |
 | vLLM on Compute Engine g2 (L4) | GCP | 94.3 |
 | Gemini 3.5 Flash-Lite | GCP | 93.3 |
 | Vertex AI endpoint (L4) | GCP | 90.2 |
 | Azure AI Foundry, gpt-4.1-nano | Azure | 49.7 |
+| Gemma 4 26B, Vertex AI MaaS | GCP | 14.2 |
 
-The Compute Engine L4 ran in Montreal and is the slowest L4 from the client while its server-side decode, 143.1 tok/s, is the fastest of the GCP L4s: the network path accounts for the difference.
+The Compute Engine L4 ran in Montreal and is the slowest L4 from the client while its server-side decode, 143.1 tok/s, is the fastest of the GCP L4s: the network path accounts for the difference. The TPU v5e-1 decodes 144.1 tok/s server-side, level with the L4s.
 
 ---
 
@@ -206,11 +208,20 @@ List prices on the day, from each cloud's pricing API: the AWS Pricing API, the 
 |---|---|---|
 | Amazon Bedrock, Nova Micro | per token | 0.14 |
 | Azure AI Foundry, gpt-4.1-nano | per token | 0.40 |
+| Gemma 4 26B, Vertex AI MaaS | per token | 0.60 |
+| Cloud TPU v5e-1, flex-start | 0.60 | 1.58 |
 | EC2 g6.xlarge, L4 | 0.8048 | 1.69 |
+| Compute Engine g2-standard-4, L4 | 0.7783 | 2.29 |
+| Cloud Run, L4 | 1.0465 | 2.44 |
+| Gemini 3.5 Flash-Lite | per token | 2.50 |
+| GKE Autopilot, L4 | 0.9593 | 2.55 |
+| Vertex AI endpoint, L4 | 0.919 | 2.83 |
 | SageMaker ml.g6.xlarge, L4 | 1.1267 | 2.98 |
 | Azure NV36ads_A10_v5, A10 | 3.20 | 5.33 |
 
-The A10 is the fastest GPU here and the most expensive per hour: Azure sells a whole A10 only with 36 vCPUs, and the smaller NVadsA10 v5 sizes are fractions of the GPU. Batching closes most of the gap. With `google/gemma-4-E2B-it-qat-w4a16-ct`, the model AWS measured in parallel on a g6, the A10 reached 2118.05 tok/s with 16 requests at once, which is 0.420 USD per million output tokens against 0.150 on the g6.
+The A10 is the fastest GPU here and the most expensive per hour: Azure sells a whole A10 only with 36 vCPUs, and the smaller NVadsA10 v5 sizes are fractions of the GPU. Batching closes most of the gap. With `google/gemma-4-E2B-it-qat-w4a16-ct`, the model AWS measured in parallel on a g6, the A10 reached 2118.05 tok/s with 16 requests at once, which is 0.420 USD per million output tokens against 0.150 on the g6. On Google Cloud, 16 requests at once brought the TPU v5e-1 to 1207.4 tok/s, 0.138 USD per million output tokens, and the GKE L4 to 1310.0 tok/s, 0.203 USD.
+
+The TPU price is the flex-start rate, the only way the v5e-1 got capacity; on demand it is 1.20 USD an hour, 3.17 per million output tokens one request at a time. Cloud Run bills only while an instance exists, so it costs nothing scaled to zero.
 
 ---
 
@@ -266,13 +277,13 @@ The model that counted rows wrong in all 20 runs got the right answer in 19 of 2
 | Managed GPU endpoint | Vertex AI, 20/20 | SageMaker, 20/20 | blocked: quota 0 |
 | Serverless GPU | Cloud Run L4, 20/20, scales to zero | none | blocked: quota 0 |
 | Your own GPU VM | L4 in Montreal after 15 refused zones | L4 and T4G | A10, the fastest GPU here |
-| Own chip | TPU v5e-1; v6e had no capacity | Inferentia2, Trainium | none |
+| Own chip | TPU v5e-1, 20/20, 1.58 USD per 1M output tokens; v6e had no capacity | Inferentia2, Trainium | none |
 
 ---
 
 #### So, Which One?
 
-Start on the per-token API of the cloud you already use: nothing to run, tool calls work, and Nova Micro and gpt-4.1-nano cost cents per million output tokens. Move to vLLM on your own GPU when you need your own weights; the same container and flags ran unchanged on all three clouds. Google Cloud offers the most ways to run that container, from Cloud Run to GKE to a Vertex AI endpoint. AWS was the cheapest per token on its own GPU and is the only cloud here with two chips of its own that run Gemma 4. Azure's A10 decoded fastest per request, at the highest hourly price, and its serverless and managed GPU paths need a quota request first.
+Start on the per-token API of the cloud you already use: nothing to run, tool calls work, and Nova Micro and gpt-4.1-nano cost cents per million output tokens. Move to vLLM on your own GPU when you need your own weights; the same container and flags ran unchanged on all three clouds. Google Cloud offers the most ways to run that container, from Cloud Run to GKE to a Vertex AI endpoint. Google Cloud's TPU v5e-1 on flex-start was the cheapest backend you run yourself, per token. AWS's g6 was the cheapest GPU per token, and AWS is the only cloud here with two chips of its own that run Gemma 4. Azure's A10 decoded fastest per request, at the highest hourly price, and its serverless and managed GPU paths need a quota request first.
 
 ---
 
@@ -283,6 +294,7 @@ The goal of this article was to compare LLM inference on Google Cloud, AWS and A
 - 🟢 **The same vLLM container and flags served the same Gemma 4 repack on all three clouds**, and scored 20 of 20 with the right filter on every GPU backend.
 - 🟢 **One agent drove all three clouds at once**, with any cloud's model as orchestrator and every number computed in code.
 - 🟢 **The Azure A10 decoded fastest**: 166.9 tok/s from the client and 194.2 on the instance, against 141.7 for an L4 on the same repack.
+- 🟢 **The Cloud TPU v5e-1 was the cheapest backend run by hand**: 1.58 USD per million output tokens one request at a time and 0.138 with 16 at once, on flex-start capacity.
 - 🟢 **Every per-token flagship scored 20 of 20**: Nova Micro, Gemini 3.5 Flash-Lite and gpt-4.1-nano.
 - ⚠️ **Quota did not buy capacity on AWS or Google Cloud**: 15 zones refused the L4 on Google Cloud and five refused inf2 on AWS.
 - ⚠️ **The A10 costs four times the L4 per hour**: 3.20 against 0.8048 USD, which batching brings to 0.420 against 0.150 USD per million output tokens.
@@ -303,6 +315,7 @@ The strategy for serving one model on Google Cloud, AWS and Azure behind one Str
 * [azure-inference | GitHub](https://github.com/xbill9/azure-inference)
 * [Strands Agents | GitHub](https://github.com/strands-agents/sdk-python)
 * [vLLM | GitHub](https://github.com/vllm-project/vllm)
+* [NVadsA10_v5 size series | Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nvadsa10v5-series)
 * [Install NVIDIA GPU drivers on N-series VMs running Linux | Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup)
 * [Serverless GPUs in Azure Container Apps | Microsoft Learn](https://learn.microsoft.com/en-us/azure/container-apps/gpu-serverless-overview)
 * [GPUs on Cloud Run | Google Cloud](https://cloud.google.com/run/docs/configuring/services/gpu)

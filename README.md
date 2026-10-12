@@ -4,7 +4,7 @@ LLM inference on Google Cloud, AWS and Azure, compared with the same agent, grad
 
 | Repository | Backends |
 |---|---|
-| [gcp-inference](https://github.com/xbill9/gcp-inference) | Gemini, Gemma 4 26B on Vertex AI MaaS, Vertex AI endpoint, Cloud Run, GKE Autopilot, Compute Engine g2 (L4), Cloud TPU v6e |
+| [gcp-inference](https://github.com/xbill9/gcp-inference) | Gemini, Gemma 4 26B on Vertex AI MaaS, Vertex AI endpoint, Cloud Run, GKE Autopilot, Compute Engine g2 (L4), Cloud TPU v5e-1 (v6e had no capacity) |
 | [aws-inference-strands](https://github.com/xbill9/aws-inference-strands) | Bedrock, SageMaker, EC2 g6 (L4), g5g (T4G), inf2, trn1 |
 | [azure-inference](https://github.com/xbill9/azure-inference) | Foundry (gpt-4.1-nano, Phi-4-mini), NV36ads_A10_v5 (A10); Container Apps GPU blocked by quota |
 
