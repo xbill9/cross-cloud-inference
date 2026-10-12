@@ -4,6 +4,9 @@
 
 overview   one Strands agent on the laptop, three cloud columns, one box per backend
 tokps      client tok/s per backend, from results/comparison.json (computed by compare_clouds.py)
+cost1      USD per 1M output tokens, one request at a time, from results/comparison.json
+cost16     USD per 1M output tokens with 16 requests at once: aggregate tok/s from each repo's parallel
+           results, USD/hr from results/comparison.json
 """
 
 import hashlib
@@ -79,7 +82,7 @@ def tokps():
     rows = json.load(open(os.path.join(REPO, "results", "comparison.json")))
     rows = sorted((r for r in rows if r.get("tok_s") and r["id"] != "gcp.maas"), key=lambda r: r["tok_s"])
     fig, ax = plt.subplots(figsize=(16, 9))
-    fig.subplots_adjust(left=0.30, right=0.95, top=0.92, bottom=0.08)
+    fig.subplots_adjust(left=0.30, right=0.95, top=0.97, bottom=0.08)
     labels = [f"{r['cloud']}  {r['hardware'] if r['hardware'] != 'managed' else r['model']}" for r in rows]
     ax.barh(labels, [r["tok_s"] for r in rows], color=[CLOUD[r["cloud"]] for r in rows], height=0.65)
     for i, r in enumerate(rows):
@@ -88,10 +91,62 @@ def tokps():
     ax.tick_params(axis="y", labelsize=13); ax.tick_params(axis="x", labelsize=12)
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
-    ax.set_title("Same 100-token prompt, every backend", fontsize=20, weight="bold", color=INK, loc="left")
     save(fig, "tokps")
+
+
+def hbars(rows, value, label, fmt, xlabel, stem, note=None):
+    """Slide charts carry no title: the slide title states the finding."""
+    rows = sorted(rows, key=lambda r: -r[value])
+    fig, ax = plt.subplots(figsize=(16, 9))
+    fig.subplots_adjust(left=0.30, right=0.93, top=0.97, bottom=0.12 if note else 0.08)
+    ax.barh([label(r) for r in rows], [r[value] for r in rows], color=[CLOUD[r["cloud"]] for r in rows], height=0.65)
+    top = max(r[value] for r in rows)
+    for i, r in enumerate(rows):
+        ax.text(r[value] + top * 0.01, i, fmt(r[value]), va="center", fontsize=13, color=INK)
+    ax.set_xlabel(xlabel, fontsize=14, color=INK)
+    ax.tick_params(axis="y", labelsize=13); ax.tick_params(axis="x", labelsize=12)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    if note:
+        fig.text(0.30, 0.02, note, fontsize=11, color=MUTED)
+    save(fig, stem)
+
+
+def cost1():
+    rows = [r for r in json.load(open(os.path.join(REPO, "results", "comparison.json"))) if r.get("usd_per_1m_out")]
+    hbars(rows, "usd_per_1m_out",
+          lambda r: f"{r['cloud']}  {r['hardware'] if r['hardware'] != 'managed' else r['model']}",
+          lambda v: f"{v:.2f}", "USD per million output tokens, one request at a time, list price",
+          "cost1",
+          "Hourly backends: USD per hour / (median tok/s x 3600) x 1e6. Per-token APIs: list output price.")
+
+
+def cost16():
+    home = os.path.expanduser("~")
+    hourly = {r["id"]: float(r["price"].split()[0]) for r in json.load(open(os.path.join(REPO, "results", "comparison.json")))
+              if r.get("price", "").endswith("USD/hr")}
+    tok = {}
+    for f, i in ((f"{home}/aws-inference-strands/results/2026-10-12-cost/parallel-g6.json", "aws.g6"),
+                 (f"{home}/aws-inference-strands/results/2026-10-12-cost/parallel-sagemaker.json", "aws.sagemaker"),
+                 (f"{home}/azure-inference/results/2026-10-12/parallel-vm.json", "azure.vm")):
+        tok[i] = json.load(open(f))["load"]["16"]["aggregate_tokens_per_second_median"]
+    for r in json.load(open(f"{home}/gcp-inference/results/2026-10-12/parallel.json"))["rows"]:
+        if r["parallel"] == 16:
+            tok[f"gcp.{r['backend']}"] = r["aggregate_tok_s"]
+    names = {"aws.g6": "L4 (g6.xlarge)", "aws.sagemaker": "L4 (ml.g6.xlarge)", "azure.vm": "A10 (NV36ads_A10_v5)",
+             "gcp.gce": "L4 (g2-standard-4)", "gcp.gke": "L4 (GKE Autopilot)", "gcp.tpu": "TPU v5e-1, flex-start"}
+    clouds = {"aws": "AWS", "gcp": "GCP", "azure": "Azure"}
+    rows = [{"cloud": clouds[i.split(".")[0]], "name": names[i], "tok": t,
+             "usd": hourly[i] / (t * 3600) * 1e6} for i, t in tok.items()]
+    hbars(rows, "usd", lambda r: f"{r['cloud']}  {r['name']}  ({r['tok']:g} tok/s)", lambda v: f"{v:.3f}",
+          "USD per million output tokens, 16 requests at once, list price",
+          "cost16",
+          "256-token answers. AWS and Azure: compare.py on the instance, Gemma 4 E2B QAT. "
+          "GCP: timed from the client; TPU serves E2B bf16.")
 
 
 if __name__ == "__main__":
     overview()
     tokps()
+    cost1()
+    cost16()
