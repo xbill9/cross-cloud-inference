@@ -27,7 +27,7 @@ COLUMNS = {
     "GCP": [("Gemini 3.5 Flash-Lite", "per token", "ok"), ("Gemma 4 26B, MaaS", "per token", "ok"),
             ("Vertex AI endpoint", "L4", "ok"), ("Cloud Run", "L4, scales to zero", "ok"),
             ("GKE Autopilot", "L4", "ok"), ("Compute Engine g2", "L4, Montreal", "ok"),
-            ("Cloud TPU v6e", "no on-demand capacity", "blocked")],
+            ("Cloud TPU v5e-1", "v6e: no capacity", "ok")],
     "AWS": [("Bedrock, Nova Micro", "per token", "ok"), ("SageMaker endpoint", "L4", "ok"),
             ("EC2 g6", "L4", "ok"), ("EC2 g5g", "T4G + Graviton2", "ok"),
             ("EC2 inf2", "Inferentia2", "ok"), ("EC2 trn1", "Trainium", "ok")],

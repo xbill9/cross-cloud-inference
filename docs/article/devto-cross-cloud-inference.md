@@ -24,11 +24,11 @@ This comparison runs all of them. Three repositories, one per cloud, share the s
 
 | Cloud | Per-token API | Managed endpoint / serverless | Your own VM |
 |---|---|---|---|
-| Google Cloud | Gemini 3.5 Flash-Lite; Gemma 4 26B (Vertex AI MaaS) | Vertex AI endpoint, Cloud Run, GKE Autopilot (L4) | Compute Engine g2 (L4); Cloud TPU v6e |
+| Google Cloud | Gemini 3.5 Flash-Lite; Gemma 4 26B (Vertex AI MaaS) | Vertex AI endpoint, Cloud Run, GKE Autopilot (L4) | Compute Engine g2 (L4); Cloud TPU v5e-1 |
 | AWS | Amazon Nova Micro (Bedrock) | SageMaker endpoint (L4) | EC2 g6 (L4), g5g (T4G), inf2, trn1 |
 | Azure | gpt-4.1-nano; Phi-4-mini (Foundry) | Container Apps serverless GPU: quota 0 | NV36ads_A10_v5 (A10) |
 
-Every GPU row serves `xbill9/gemma-4-E2B-it-qat-q4_0-w4a16-ct-text-emb4` with vLLM 0.30.0 and `--enable-auto-tool-choice --tool-call-parser gemma4`, except the AWS g5g (stock E2B in fp16 on a patched vLLM) and the AWS Neuron chips (a hand-ported E2B build). Each per-token API serves its own cloud's model.
+Every GPU row serves `xbill9/gemma-4-E2B-it-qat-q4_0-w4a16-ct-text-emb4` with vLLM 0.30.0 and `--enable-auto-tool-choice --tool-call-parser gemma4`, except the AWS g5g (stock E2B in fp16 on a patched vLLM), the AWS Neuron chips (a hand-ported E2B build) and the Cloud TPU (stock E2B in bf16 on `vllm/vllm-tpu:v0.30.0`). Each per-token API serves its own cloud's model.
 
 ---
 
@@ -52,7 +52,7 @@ On Google Cloud the project holds quota for 16 L4 GPUs in every US region. Compu
 18:23:03Z gce: launched in northamerica-northeast1-b
 ```
 
-The TPU v6e had no on-demand capacity in any us-east5 zone, so `stage/up.sh` queued a flex-start request.
+The TPU v6e was refused in every zone the project can use, on-demand and Spot, and a queued flex-start request never got capacity. A v5e-1 came up through flex-start in us-west4-a.
 
 On AWS, inf2 was refused in five zones across us-east-2 and us-east-1 and launched in us-west-2a.
 
@@ -266,7 +266,7 @@ The model that counted rows wrong in all 20 runs got the right answer in 19 of 2
 | Managed GPU endpoint | Vertex AI, 20/20 | SageMaker, 20/20 | blocked: quota 0 |
 | Serverless GPU | Cloud Run L4, 20/20, scales to zero | none | blocked: quota 0 |
 | Your own GPU VM | L4 in Montreal after 15 refused zones | L4 and T4G | A10, the fastest GPU here |
-| Own chip | TPU v6e: no on-demand capacity | Inferentia2, Trainium | none |
+| Own chip | TPU v5e-1; v6e had no capacity | Inferentia2, Trainium | none |
 
 ---
 

@@ -45,7 +45,7 @@ WHAT = {
     "gcp.cloudrun": ("GCP", "serverless GPU", "L4 (Cloud Run)", "Gemma 4 E2B repack"),
     "gcp.gke": ("GCP", "managed Kubernetes", "L4 (GKE Autopilot)", "Gemma 4 E2B repack"),
     "gcp.gce": ("GCP", "your VM", "L4 (g2-standard-4)", "Gemma 4 E2B repack"),
-    "gcp.tpu": ("GCP", "your VM, Google chip", "TPU v6e-1", "Gemma 4 E2B repack"),
+    "gcp.tpu": ("GCP", "your VM, Google chip", "TPU v5e-1 (v5litepod-1)", "Gemma 4 E2B bf16"),
     "azure.foundry": ("Azure", "per-token API", "managed", "gpt-4.1-nano"),
     "azure.phi": ("Azure", "per-token API, open model", "managed", "Phi-4-mini-instruct"),
     "azure.vm": ("Azure", "your VM", "A10 (NV36ads_A10_v5)", "Gemma 4 E2B repack"),
