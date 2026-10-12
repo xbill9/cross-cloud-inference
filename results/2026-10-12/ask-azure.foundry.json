@@ -1,0 +1,38 @@
+{
+  "question": "What is the capital of France? Answer in one word.",
+  "orchestrator": "azure.foundry",
+  "results": [
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "Paris",
+      "completion_tokens": 2,
+      "seconds": 0.139,
+      "tokens_per_second": 14.4
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "Paris",
+      "completion_tokens": 2,
+      "seconds": 1.203,
+      "tokens_per_second": 1.7
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "Paris",
+      "completion_tokens": 1,
+      "seconds": 1.274,
+      "tokens_per_second": 0.8
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "Paris",
+      "completion_tokens": 1,
+      "seconds": 2.193,
+      "tokens_per_second": 0.5
+    }
+  ]
+}

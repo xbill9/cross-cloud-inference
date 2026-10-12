@@ -1,0 +1,272 @@
+[
+  {
+    "id": "aws.bedrock",
+    "cloud": "AWS",
+    "path": "per-token API",
+    "hardware": "managed",
+    "model": "Amazon Nova Micro",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 1.05,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 115.85,
+    "bench_median_s": 0.8634999999999999,
+    "price": "0.140 USD/1M out",
+    "usd_per_1m_out": 0.14
+  },
+  {
+    "id": "aws.sagemaker",
+    "cloud": "AWS",
+    "path": "managed endpoint",
+    "hardware": "L4 (ml.g6.xlarge)",
+    "model": "Gemma 4 E2B repack",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 0.56,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 105.2,
+    "bench_median_s": 0.798,
+    "price": "1.1267 USD/hr",
+    "usd_per_1m_out": 2.98,
+    "usd_per_month_24x7": 822
+  },
+  {
+    "id": "aws.g6",
+    "cloud": "AWS",
+    "path": "your VM",
+    "hardware": "L4 (g6.xlarge)",
+    "model": "Gemma 4 E2B repack",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 0.4,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 132.45,
+    "bench_median_s": 0.6345000000000001,
+    "price": "0.8048 USD/hr",
+    "usd_per_1m_out": 1.69,
+    "usd_per_month_24x7": 588
+  },
+  {
+    "id": "aws.g5g",
+    "cloud": "AWS",
+    "path": "your VM",
+    "hardware": "T4G + Graviton2 (g5g.2xlarge)",
+    "model": "Gemma 4 E2B fp16",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 2.3,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 35.8,
+    "bench_median_s": 2.7110000000000003,
+    "price": "0.556 USD/hr",
+    "usd_per_1m_out": 4.31,
+    "usd_per_month_24x7": 406
+  },
+  {
+    "id": "aws.inf2",
+    "cloud": "AWS",
+    "path": "your VM, AWS chip",
+    "hardware": "Inferentia2 (inf2.xlarge)",
+    "model": "Gemma 4 E2B, Neuron port",
+    "engine_runs": 0,
+    "engine_correct": 0,
+    "engine_right_filter": 0,
+    "engine_median_s": null,
+    "rows_runs": 0,
+    "rows_correct": 0,
+    "filters_sent": [],
+    "tok_s": 36.6,
+    "bench_median_s": 2.569,
+    "price": "0.7582 USD/hr",
+    "usd_per_1m_out": 5.75,
+    "usd_per_month_24x7": 553
+  },
+  {
+    "id": "aws.trn1",
+    "cloud": "AWS",
+    "path": "your VM, AWS chip",
+    "hardware": "Trainium (trn1.2xlarge)",
+    "model": "Gemma 4 E2B, Neuron port",
+    "engine_runs": 0,
+    "engine_correct": 0,
+    "engine_right_filter": 0,
+    "engine_median_s": null,
+    "rows_runs": 0,
+    "rows_correct": 0,
+    "filters_sent": [],
+    "tok_s": 36.9,
+    "bench_median_s": 2.5495,
+    "price": "1.34375 USD/hr",
+    "usd_per_1m_out": 10.12,
+    "usd_per_month_24x7": 981
+  },
+  {
+    "id": "gcp.gemini",
+    "cloud": "GCP",
+    "path": "per-token API",
+    "hardware": "managed",
+    "model": "Gemini 3.5 Flash-Lite",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 2.95,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 93.3,
+    "bench_median_s": 1.029
+  },
+  {
+    "id": "gcp.maas",
+    "cloud": "GCP",
+    "path": "per-token API, open model",
+    "hardware": "managed",
+    "model": "Gemma 4 26B",
+    "engine_runs": 20,
+    "engine_correct": 19,
+    "engine_right_filter": 19,
+    "engine_median_s": 13.0,
+    "rows_runs": 20,
+    "rows_correct": 0,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 14.2,
+    "bench_median_s": 7.077
+  },
+  {
+    "id": "gcp.vertex",
+    "cloud": "GCP",
+    "path": "managed endpoint",
+    "hardware": "L4",
+    "model": "Gemma 4 E2B repack",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 0.92,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 90.2,
+    "bench_median_s": 0.932
+  },
+  {
+    "id": "gcp.cloudrun",
+    "cloud": "GCP",
+    "path": "serverless GPU",
+    "hardware": "L4 (Cloud Run)",
+    "model": "Gemma 4 E2B repack",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 0.52,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 119.3,
+    "bench_median_s": 0.704
+  },
+  {
+    "id": "gcp.gke",
+    "cloud": "GCP",
+    "path": "managed Kubernetes",
+    "hardware": "L4 (GKE Autopilot)",
+    "model": "Gemma 4 E2B repack",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 0.7,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 104.7,
+    "bench_median_s": 0.803
+  },
+  {
+    "id": "gcp.gce",
+    "cloud": "GCP",
+    "path": "your VM",
+    "hardware": "L4 (g2-standard-4)",
+    "model": "Gemma 4 E2B repack",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 0.89,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 94.3,
+    "bench_median_s": 0.891
+  },
+  {
+    "id": "azure.foundry",
+    "cloud": "Azure",
+    "path": "per-token API",
+    "hardware": "managed",
+    "model": "gpt-4.1-nano",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 3.19,
+    "rows_runs": 20,
+    "rows_correct": 19,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 49.7,
+    "bench_median_s": 2.014,
+    "price": "0.400 USD/1M out",
+    "usd_per_1m_out": 0.4
+  },
+  {
+    "id": "azure.vm",
+    "cloud": "Azure",
+    "path": "your VM",
+    "hardware": "A10 (NV36ads_A10_v5)",
+    "model": "Gemma 4 E2B repack",
+    "engine_runs": 20,
+    "engine_correct": 20,
+    "engine_right_filter": 20,
+    "engine_median_s": 0.38,
+    "rows_runs": 20,
+    "rows_correct": 20,
+    "filters_sent": [
+      "id >= 10"
+    ],
+    "tok_s": 166.9,
+    "bench_median_s": 0.503,
+    "price": "3.2 USD/hr",
+    "usd_per_1m_out": 5.33,
+    "usd_per_month_24x7": 2336
+  }
+]

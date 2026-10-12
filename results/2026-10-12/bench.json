@@ -1,0 +1,364 @@
+{
+  "prompt": "Write a short paragraph about the ocean.",
+  "max_tokens": 100,
+  "summary": [
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "median_seconds": 0.814,
+      "median_tokens_per_second": 122.8,
+      "min_tps": 77.6,
+      "max_tps": 131.8,
+      "tokens": "100-100"
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "median_seconds": 0.892,
+      "median_tokens_per_second": 105.3,
+      "min_tps": 92.7,
+      "max_tps": 120.9,
+      "tokens": "88-96"
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "median_seconds": 2.039,
+      "median_tokens_per_second": 48.8,
+      "min_tps": 45.9,
+      "max_tps": 54.8,
+      "tokens": "98-100"
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "median_seconds": 0.512,
+      "median_tokens_per_second": 169.8,
+      "min_tps": 167.1,
+      "max_tps": 170.6,
+      "tokens": "87-87"
+    }
+  ],
+  "runs": [
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, all interconnected in complex ecosystems. The ocean's waves and currents not only shape coastlines but also influence weather patterns and provide a source of food, recreation, and economic activity for millions of people around",
+      "completion_tokens": 100,
+      "seconds": 0.806,
+      "tokens_per_second": 124.1
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, all intricately connected within complex ecosystems. The ocean's waves, tides, and currents not only shape coastal landscapes but also influence weather patterns and global climate systems. Beyond its ecological significance, the ocean is",
+      "completion_tokens": 100,
+      "seconds": 0.759,
+      "tokens_per_second": 131.8
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, and its waves have been a source of inspiration and wonder for humans throughout history. The ocean's currents, tides, and ecosystems are interconnected, creating a complex web of life that is both beautiful and",
+      "completion_tokens": 100,
+      "seconds": 0.822,
+      "tokens_per_second": 121.6
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, and its waves have shaped coastlines and influenced weather patterns for millennia. The ocean's beauty is both breathtaking and humbling, with its dynamic ecosystems and the sheer scale of its depths still holding many secrets",
+      "completion_tokens": 100,
+      "seconds": 1.289,
+      "tokens_per_second": 77.6
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting an incredible diversity of life. Its deep blue waters are home to countless species of fish, marine mammals, and plant life, all intricately connected in complex ecosystems. The ocean's waves, tides, and currents not only shape the coastlines but also influence weather patterns and climate systems worldwide. Beyond its ecological importance, the ocean",
+      "completion_tokens": 100,
+      "seconds": 0.783,
+      "tokens_per_second": 127.7
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, and its waves have been a source of wonder and inspiration for humans throughout history. The ocean's currents, tides, and ecosystems are interconnected in complex ways, influencing weather patterns and providing essential resources such",
+      "completion_tokens": 100,
+      "seconds": 0.878,
+      "tokens_per_second": 113.9
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting an incredible diversity of life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, and its waves have shaped coastlines and influenced weather patterns for millions of years. The ocean's beauty is both serene and awe-inspiring, with its ever-changing moods ranging from calm and tranquil to",
+      "completion_tokens": 100,
+      "seconds": 1.061,
+      "tokens_per_second": 94.2
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, all interconnected in complex ecosystems. The ocean's waves, tides, and currents not only shape coastal landscapes but also influence weather patterns and global climate systems. Beyond its ecological significance, the ocean is a",
+      "completion_tokens": 100,
+      "seconds": 0.843,
+      "tokens_per_second": 118.6
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, all interconnected in complex ecosystems. The ocean's waves, tides, and currents not only shape coastal landscapes but also influence weather patterns and global climate systems. Beyond its ecological significance, the ocean is a",
+      "completion_tokens": 100,
+      "seconds": 0.784,
+      "tokens_per_second": 127.6
+    },
+    {
+      "backend": "aws.bedrock",
+      "label": "AWS Amazon Bedrock",
+      "text": "The ocean is a vast and mysterious expanse that covers over 70% of the Earth's surface, playing a crucial role in regulating the planet's climate and supporting a diverse array of marine life. Its deep blue waters are home to countless species, from tiny plankton to majestic whales, and its waves have been a source of inspiration and wonder for humans throughout history. The ocean's currents, tides, and waves are driven by complex interactions between the atmosphere, land, and water,",
+      "completion_tokens": 100,
+      "seconds": 0.794,
+      "tokens_per_second": 126.0
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mysterious realm that covers over seventy percent of the Earth's surface, holding ninety-nine percent of the planet's habitable space. From the sunlit, coral-filled shallows to the pitch-black abyss of the deep sea, it is a dynamic world of crushing pressure, alien creatures, and powerful currents. More than just a breathtaking expanse of blue, the ocean is the lifeblood of our planet\u2014generating most of the oxygen we breathe",
+      "completion_tokens": 96,
+      "seconds": 0.916,
+      "tokens_per_second": 104.8
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mysterious expanse that covers over seventy percent of the Earth's surface, holding ninety-seven percent of the planet's water. From the sunlit, bustling coral reefs near the surface to the pitch-black, crushing depths of the abyssal plain, it supports an astonishing diversity of life. Beyond its ecological importance, the ocean acts as the Earth's life support system, regulating our climate, generating most of the oxygen we breathe, and connecting",
+      "completion_tokens": 96,
+      "seconds": 0.922,
+      "tokens_per_second": 104.1
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mesmerizing wilderness that covers over seventy percent of our planet, holding the very cradle of life within its depths. From sunlit, turquoise shallows teeming with vibrant coral reefs to the pitch-black, crushing abyss of the deep sea, it is a realm of endless mystery and vital balance. Its endless tides regulate our climate, produce the air we breathe, and connect distant continents, remaining an eternal, powerful heartbeat at the center of Earth.",
+      "completion_tokens": 93,
+      "seconds": 1.003,
+      "tokens_per_second": 92.7
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mesmerizing wilderness that covers over seventy percent of the Earth's surface, holding secrets in its dark, fathomless depths. From the sunlit shallows where vibrant coral reefs teem with life to the crushing pressure of the midnight zone, it is a dynamic realm of endless motion and mystery. Driven by invisible currents and ancient tides, this immense body of water is not only the cradle of life on our planet, but the very heartbeat of the Earth,",
+      "completion_tokens": 96,
+      "seconds": 0.813,
+      "tokens_per_second": 118.1
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mysterious realm that covers over seventy percent of the Earth's surface, holding ninety-nine percent of the planet's habitable space. From the sunlit, vibrant coral reefs swarming with life to the pitch-black, crushing depths of the deep sea, it is a dynamic engine that drives global weather, regulates temperature, and produces the majority of the oxygen we breathe. This ceaseless expanse of blue is not only the cradle of all life on",
+      "completion_tokens": 96,
+      "seconds": 0.86,
+      "tokens_per_second": 111.7
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mysterious realm that covers over seventy percent of the Earth's surface, holding ninety-nine percent of the planet's habitable space. From the sunlit, coral-filled shallows to the pitch-black, crushing depths of the abyss, it teems with life ranging from microscopic plankton to the magnificent blue whale. Driven by constant tides and currents, this endless expanse of blue not only shapes our global climate and provides the air we breathe,",
+      "completion_tokens": 96,
+      "seconds": 0.794,
+      "tokens_per_second": 120.9
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "Covering more than seventy percent of the Earth's surface, the ocean is a vast, shimmering expanse of mystery and life. From sunlit, turquoise shallows teeming with colorful coral reefs to the pitch-black, crushing depths of the abyssal plain, it connects distant continents and regulates the planet's climate. This restless, rolling frontier remains one of the greatest natural wonders of the world, holding countless secrets yet to be discovered.",
+      "completion_tokens": 88,
+      "seconds": 0.876,
+      "tokens_per_second": 100.4
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mesmerizing expanse that covers the majority of our planet, holding secrets in its dark, fathomless depths. Its surface shimmers in shades of turquoise and deep blue, stirred by rhythmic waves that gently kiss the shore or crash with raw, untamed power. Beneath the waves lies a bustling, alien world of vibrant coral reefs, glowing bioluminescent creatures, and ancient trenches. Endless and deeply mysterious, the ocean is the lifeblood of the Earth, sustaining countless",
+      "completion_tokens": 96,
+      "seconds": 1.015,
+      "tokens_per_second": 94.6
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mysterious realm that covers over seventy percent of the Earth's surface, holding the very cradle of life within its endless blue expanse. From sunlit, coral-filled shallows teeming with vibrant marine life to the pitch-black, crushing depths of the abyssal plains, it is a world of breathtaking beauty and raw power. Constantly in motion through sweeping currents and rolling tides, the ocean not only regulates our planet's climate and produces the majority",
+      "completion_tokens": 96,
+      "seconds": 0.908,
+      "tokens_per_second": 105.8
+    },
+    {
+      "backend": "gcp.gemini",
+      "label": "GCP Gemini on Vertex AI",
+      "text": "The ocean is a vast, mysterious realm that covers over seventy percent of the Earth's surface, holding ninety-nine percent of its habitable space. Beneath its restless, sparkling surface lies a dramatic underwater landscape of towering mountains, deep trenches, and vibrant coral reefs teeming with life. From the microscopic phytoplankton that generate the oxygen we breathe to the colossal blue whales gliding through the dark abyss, the ocean is the beating heart of our planet, driving our climate and sustaining all life on Earth",
+      "completion_tokens": 96,
+      "seconds": 0.835,
+      "tokens_per_second": 115.0
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes of deep blue waters, coral reefs, and sandy beaches. Its vastness and beauty continue to inspire wonder and curiosity in all who explore its depths.",
+      "completion_tokens": 99,
+      "seconds": 2.034,
+      "tokens_per_second": 48.7
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes of deep blue waters, coral reefs, and sandy beaches. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate",
+      "completion_tokens": 100,
+      "seconds": 2.102,
+      "tokens_per_second": 47.6
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes of deep blue waters, coral reefs, and sandy beaches. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate",
+      "completion_tokens": 100,
+      "seconds": 1.824,
+      "tokens_per_second": 54.8
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering about 71% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate and weather patterns. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes and opportunities for recreation and exploration. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate change, highlighting",
+      "completion_tokens": 100,
+      "seconds": 1.968,
+      "tokens_per_second": 50.8
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes and opportunities for recreation. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate change, highlighting the need for conservation",
+      "completion_tokens": 100,
+      "seconds": 2.061,
+      "tokens_per_second": 48.5
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes of deep blue waters, coral reefs, and sandy beaches. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate",
+      "completion_tokens": 100,
+      "seconds": 2.045,
+      "tokens_per_second": 48.9
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes of deep blue waters, coral reefs, and sandy beaches. Its vastness and beauty continue to inspire wonder and curiosity in people around the world.",
+      "completion_tokens": 98,
+      "seconds": 2.051,
+      "tokens_per_second": 47.8
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes of deep blue waters, coral reefs, and sandy beaches. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate",
+      "completion_tokens": 100,
+      "seconds": 1.997,
+      "tokens_per_second": 50.1
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes of deep blue waters, coral reefs, and sandy beaches. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate",
+      "completion_tokens": 100,
+      "seconds": 1.946,
+      "tokens_per_second": 51.4
+    },
+    {
+      "backend": "azure.foundry",
+      "label": "AZURE Azure AI Foundry (gpt-4.1-nano)",
+      "text": "The ocean is a vast and mysterious expanse covering more than 70% of the Earth's surface. It is home to an incredible diversity of life, from tiny plankton to massive whales, and plays a crucial role in regulating the planet's climate. The ocean also provides essential resources such as food, minerals, and energy, while offering breathtaking landscapes and opportunities for recreation. Despite its beauty and importance, the ocean faces threats from pollution, overfishing, and climate change, highlighting the need for conservation",
+      "completion_tokens": 100,
+      "seconds": 2.18,
+      "tokens_per_second": 45.9
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.511,
+      "tokens_per_second": 170.1
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.512,
+      "tokens_per_second": 169.9
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.51,
+      "tokens_per_second": 170.6
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.512,
+      "tokens_per_second": 169.8
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.512,
+      "tokens_per_second": 169.8
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.513,
+      "tokens_per_second": 169.7
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.513,
+      "tokens_per_second": 169.5
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.521,
+      "tokens_per_second": 167.1
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.514,
+      "tokens_per_second": 169.1
+    },
+    {
+      "backend": "azure.vm",
+      "label": "AZURE vLLM on NV36ads_A10_v5 (A10)",
+      "text": "The ocean is a vast, mysterious expanse of water that covers more than seventy percent of our planet. Its depths hold a breathtaking diversity of life, from microscopic organisms to colossal whales, and its rhythmic tides have shaped coastlines and cultures for millennia. The ocean's power is evident in its crashing waves and deep currents, yet it also whispers of tranquility, offering a sense of endless possibility and a profound connection to the natural world.",
+      "completion_tokens": 87,
+      "seconds": 0.512,
+      "tokens_per_second": 170.0
+    }
+  ]
+}

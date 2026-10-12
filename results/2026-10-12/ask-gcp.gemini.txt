@@ -1,0 +1,12 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+Orchestrator: GCP Gemini on Vertex AI (gemini-3.5-flash-lite)
+Backends as tools: aws.bedrock, gcp.gemini, azure.foundry, azure.vm
+
+| backend | answer | seconds | tokens/s |
+|---|---|---|---|
+| AZURE vLLM on NV36ads_A10_v5 (A10) | Paris | 0.12 | 16.7 |
+| AWS Amazon Bedrock | Paris | 0.64 | 3.1 |
+| GCP Gemini on Vertex AI | Paris | 1.48 | 0.7 |
+| AZURE Azure AI Foundry (gpt-4.1-nano) | Paris | 1.587 | 0.6 |
+
+[harness] 4 backend calls made; not asked by the agent: none

@@ -1,0 +1,8 @@
+Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+Prompt: 'Write a short paragraph about the ocean.', max_tokens=100, 10 repeats per backend
+
+backend           median s  median tok/s  tok/s range     tokens
+aws.bedrock          0.814         122.8    77.6-131.8    100-100
+gcp.gemini           0.892         105.3    92.7-120.9    88-96
+azure.foundry        2.039          48.8    45.9-54.8     98-100
+azure.vm             0.512         169.8   167.1-170.6    87-87
