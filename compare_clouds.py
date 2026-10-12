@@ -41,7 +41,7 @@ WHAT = {
     "aws.trn1": ("AWS", "your VM, AWS chip", "Trainium (trn1.2xlarge)", "Gemma 4 E2B, Neuron port"),
     "gcp.gemini": ("GCP", "per-token API", "managed", "Gemini 3.5 Flash-Lite"),
     "gcp.maas": ("GCP", "per-token API, open model", "managed", "Gemma 4 26B"),
-    "gcp.vertex": ("GCP", "managed endpoint", "L4", "Gemma 4 E2B repack"),
+    "gcp.vertex": ("GCP", "managed endpoint", "L4 (Vertex AI endpoint)", "Gemma 4 E2B repack"),
     "gcp.cloudrun": ("GCP", "serverless GPU", "L4 (Cloud Run)", "Gemma 4 E2B repack"),
     "gcp.gke": ("GCP", "managed Kubernetes", "L4 (GKE Autopilot)", "Gemma 4 E2B repack"),
     "gcp.gce": ("GCP", "your VM", "L4 (g2-standard-4)", "Gemma 4 E2B repack"),

@@ -160,7 +160,7 @@
     "id": "gcp.vertex",
     "cloud": "GCP",
     "path": "managed endpoint",
-    "hardware": "L4",
+    "hardware": "L4 (Vertex AI endpoint)",
     "model": "Gemma 4 E2B repack",
     "engine_runs": 20,
     "engine_correct": 20,

@@ -25,7 +25,7 @@ aws.sagemaker   L4 (ml.g6.xlarge)                105.2        1.1267 USD/hr     
 gcp.gke         L4 (GKE Autopilot)               104.7                    -           -            -
 gcp.gce         L4 (g2-standard-4)                94.3                    -           -            -
 gcp.gemini      managed                           93.3                    -           -            -
-gcp.vertex      L4                                90.2                    -           -            -
+gcp.vertex      L4 (Vertex AI endpoint)           90.2                    -           -            -
 azure.foundry   managed                           49.7     0.400 USD/1M out         0.4            -
 aws.trn1        Trainium (trn1.2xlarge)           36.9       1.34375 USD/hr       10.12          981
 aws.inf2        Inferentia2 (inf2.xlarge)         36.6        0.7582 USD/hr        5.75          553
