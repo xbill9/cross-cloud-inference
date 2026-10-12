@@ -25,6 +25,7 @@ INK, MUTED, BG = "#1E1E1E", "#6B6B6B", "#FFFFFF"
 CLOUD = {"GCP": "#1E8E3E", "AWS": "#FF9900", "Azure": "#0078D4"}
 TINT = {"GCP": "#E6F4EA", "AWS": "#FFF1DB", "Azure": "#E5F1FB"}
 plt.rcParams["font.family"] = ["Roboto", "DejaVu Sans"]
+SLIDE, FS = (10, 4), 10  # bar charts: inches and font size for the 8.3 x 3.3 in space on a deck card
 
 COLUMNS = {
     "GCP": [("Gemini 3.5 Flash-Lite", "per token", "ok"), ("Gemma 4 26B, MaaS", "per token", "ok"),
@@ -81,14 +82,14 @@ def overview():
 def tokps():
     rows = json.load(open(os.path.join(REPO, "results", "comparison.json")))
     rows = sorted((r for r in rows if r.get("tok_s") and r["id"] != "gcp.maas"), key=lambda r: r["tok_s"])
-    fig, ax = plt.subplots(figsize=(16, 9))
-    fig.subplots_adjust(left=0.30, right=0.95, top=0.97, bottom=0.08)
+    fig, ax = plt.subplots(figsize=SLIDE)
+    fig.subplots_adjust(left=0.31, right=0.95, top=0.98, bottom=0.12)
     labels = [f"{r['cloud']}  {r['hardware'] if r['hardware'] != 'managed' else r['model']}" for r in rows]
     ax.barh(labels, [r["tok_s"] for r in rows], color=[CLOUD[r["cloud"]] for r in rows], height=0.65)
     for i, r in enumerate(rows):
-        ax.text(r["tok_s"] + 2, i, f"{r['tok_s']:g}", va="center", fontsize=13, color=INK)
-    ax.set_xlabel("tokens per second, one request, measured on the client (median)", fontsize=14, color=INK)
-    ax.tick_params(axis="y", labelsize=13); ax.tick_params(axis="x", labelsize=12)
+        ax.text(r["tok_s"] + 2, i, f"{r['tok_s']:g}", va="center", fontsize=FS, color=INK)
+    ax.set_xlabel("tokens per second, one request, measured on the client (median)", fontsize=FS, color=INK)
+    ax.tick_params(axis="y", labelsize=FS); ax.tick_params(axis="x", labelsize=FS - 1)
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
     save(fig, "tokps")
@@ -97,18 +98,18 @@ def tokps():
 def hbars(rows, value, label, fmt, xlabel, stem, note=None):
     """Slide charts carry no title: the slide title states the finding."""
     rows = sorted(rows, key=lambda r: -r[value])
-    fig, ax = plt.subplots(figsize=(16, 9))
-    fig.subplots_adjust(left=0.30, right=0.93, top=0.97, bottom=0.12 if note else 0.08)
+    fig, ax = plt.subplots(figsize=SLIDE)
+    fig.subplots_adjust(left=0.36, right=0.93, top=0.98, bottom=0.18 if note else 0.12)
     ax.barh([label(r) for r in rows], [r[value] for r in rows], color=[CLOUD[r["cloud"]] for r in rows], height=0.65)
     top = max(r[value] for r in rows)
     for i, r in enumerate(rows):
-        ax.text(r[value] + top * 0.01, i, fmt(r[value]), va="center", fontsize=13, color=INK)
-    ax.set_xlabel(xlabel, fontsize=14, color=INK)
-    ax.tick_params(axis="y", labelsize=13); ax.tick_params(axis="x", labelsize=12)
+        ax.text(r[value] + top * 0.01, i, fmt(r[value]), va="center", fontsize=FS, color=INK)
+    ax.set_xlabel(xlabel, fontsize=FS, color=INK)
+    ax.tick_params(axis="y", labelsize=FS); ax.tick_params(axis="x", labelsize=FS - 1)
     for sp in ("top", "right"):
         ax.spines[sp].set_visible(False)
     if note:
-        fig.text(0.30, 0.02, note, fontsize=11, color=MUTED)
+        fig.text(0.36, 0.015, note, fontsize=FS - 2, color=MUTED)
     save(fig, stem)
 
 
@@ -140,9 +141,7 @@ def cost16():
              "usd": hourly[i] / (t * 3600) * 1e6} for i, t in tok.items()]
     hbars(rows, "usd", lambda r: f"{r['cloud']}  {r['name']}  ({r['tok']:g} tok/s)", lambda v: f"{v:.3f}",
           "USD per million output tokens, 16 requests at once, list price",
-          "cost16",
-          "256-token answers. AWS and Azure: compare.py on the instance, Gemma 4 E2B QAT. "
-          "GCP: timed from the client; TPU serves E2B bf16.")
+          "cost16")  # method note is the slide's footer: 256-token answers, compare.py vs client timing
 
 
 if __name__ == "__main__":
